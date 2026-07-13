@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>RevenueGuard | HVAC Membership Recovery Pilot</title>
+
+  <meta
+    name="description"
+    content="RevenueGuard helps residential HVAC companies identify unresolved failed and unattempted ServiceTitan membership charges."
+  />
+
+  <style>
+    :root {
+      --background: #f7f8fa;
+      --surface: #ffffff;
+      --text: #16202a;
+      --muted: #5f6b76;
+      --border: #dde3e8;
+      --accent: #145c4e;
+      --accent-dark: #0d4037;
+      --highlight: #e8f3ef;
+      --max-width: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--background);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max-width));
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-size: 1.25rem;
+      font-weight: 750;
+      letter-spacing: -0.03em;
+      text-decoration: none;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 96px 0 80px;
+      background:
+        radial-gradient(circle at top right, #dbeee8 0, transparent 34%),
+        var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--highlight);
+      color: var(--accent-dark);
+      font-size: 0.875rem;
+      font-weight: 750;
+    }
+
+    h1 {
+      max-width: 800px;
+      margin: 0;
+      font-size: clamp(2.6rem, 7vw, 5rem);
+      line-height: 1.02;
+      letter-spacing: -0.055em;
+    }
+
+    .hero-copy {
+      max-width: 720px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: 1.2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 13px 19px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 750;
+    }
+
+    .button-primary {
+      color: #ffffff;
+      background: var(--accent);
+    }
+
+    .button-primary:hover {
+      background: var(--accent-dark);
+    }
+
+    .button-secondary {
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+
+    section {
+      padding: 76px 0;
+    }
+
+    section + section {
+      border-top: 1px solid var(--border);
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      letter-spacing: -0.04em;
+    }
+
+    .section-intro {
+      max-width: 700px;
+      margin: 0 0 34px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      padding: 26px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .card-number {
+      margin-bottom: 14px;
+      color: var(--accent);
+      font-size: 0.875rem;
+      font-weight: 800;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.12rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .pilot-box {
+      padding: 34px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    .pilot-list {
+      display: grid;
+      gap: 16px;
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .pilot-list li {
+      padding-left: 28px;
+      position: relative;
+    }
+
+    .pilot-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .security {
+      background: var(--highlight);
+    }
+
+    .contact-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 34px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    footer {
+      padding: 34px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        min-height: 64px;
+      }
+
+      .hero {
+        padding: 72px 0 60px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-box {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#">RevenueGuard</a>
+      <a class="nav-link" href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">Limited ServiceTitan pilot</span>
+
+        <h1>Find unresolved HVAC membership revenue before it disappears.</h1>
+
+        <p class="hero-copy">
+          RevenueGuard helps residential HVAC companies identify failed and
+          unattempted membership charges that still require attention—without
+          replacing ServiceTitan or requesting access to your account.
+        </p>
+
+        <div class="hero-actions">
+          <a
+            class="button button-primary"
+            href="mailto:revenueguardteam@gmail.com?subject=RevenueGuard%20Pilot"
+          >
+            Ask about the pilot
+          </a>
+
+          <a class="button button-secondary" href="#pilot">
+            How it works
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>A focused recovery process</h2>
+
+        <p class="section-intro">
+          The pilot turns existing ServiceTitan reports into a prioritized list
+          of unresolved membership balances for your office team to review.
+        </p>
+
+        <div class="grid">
+          <article class="card">
+            <div class="card-number">01</div>
+            <h3>Provide three exports</h3>
+            <p>
+              Send recurring billing history, customer membership, and open
+              invoice reports. No account credentials are required.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-number">02</div>
+            <h3>Identify unresolved balances</h3>
+            <p>
+              We remove payments already resolved, credited, refunded, or tied
+              to inactive memberships.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-number">03</div>
+            <h3>Work the recovery queue</h3>
+            <p>
+              Your office receives a prioritized customer list showing the
+              amount requiring review and the recommended next action.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="pilot">
+      <div class="container">
+        <div class="pilot-box">
+          <h2>Founding pilot</h2>
+
+          <p class="section-intro">
+            We are inviting three to five residential HVAC companies using
+            ServiceTitan to participate in a free four-week pilot.
+          </p>
+
+          <ul class="pilot-list">
+            <li>One initial membership-payment analysis</li>
+            <li>Prioritized customer-level recovery list</li>
+            <li>Total unresolved balance requiring review</li>
+            <li>Four-week recovery measurement period</li>
+            <li>No software installation or ServiceTitan login access</li>
+            <li>No obligation to purchase anything afterward</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="security">
+      <div class="container">
+        <h2>Your data stays under your control</h2>
+
+        <p class="section-intro">
+          RevenueGuard accepts only the reports required for the analysis. We
+          do not request card numbers, banking information, payment
+          credentials, ServiceTitan passwords, or API credentials.
+        </p>
+
+        <p>
+          Participant data is used only for the agreed pilot analysis and is
+          deleted after the agreed retention period. Identifiable information
+          is never entered into public AI tools or sold to third parties.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>About RevenueGuard</h2>
+
+        <p class="section-intro">
+          RevenueGuard is an independent software research project focused on
+          improving revenue assurance for recurring-service businesses. We are
+          currently validating a focused membership-recovery process with a
+          limited number of residential HVAC companies using ServiceTitan.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div>
+            <h2>Interested in the pilot?</h2>
+            <p class="section-intro">
+              Email us to ask questions or discuss whether your membership
+              program is a fit.
+            </p>
+          </div>
+
+          <a
+            class="button button-primary"
+            href="mailto:revenueguardteam@gmail.com?subject=RevenueGuard%20Pilot"
+          >
+            revenueguardteam@gmail.com
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 RevenueGuard. Independent research pilot.
+    </div>
+  </footer>
+</body>
+</html>
