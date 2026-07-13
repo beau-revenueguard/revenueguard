@@ -8,7 +8,7 @@
 
   <meta
     name="description"
-    content="RevenueGuard helps residential HVAC companies identify unresolved failed and unattempted ServiceTitan membership charges."
+    content="RevenueGuard helps residential HVAC companies identify unresolved failed and unattempted ServiceTitan membership charges before they become lost revenue."
   />
 
   <style>
@@ -71,6 +71,12 @@
       text-decoration: none;
     }
 
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
     .nav-link {
       color: var(--muted);
       text-decoration: none;
@@ -101,7 +107,7 @@
     }
 
     h1 {
-      max-width: 800px;
+      max-width: 860px;
       margin: 0;
       font-size: clamp(2.6rem, 7vw, 5rem);
       line-height: 1.02;
@@ -109,10 +115,18 @@
     }
 
     .hero-copy {
-      max-width: 720px;
+      max-width: 760px;
       margin: 28px 0 0;
       color: var(--muted);
       font-size: 1.2rem;
+    }
+
+    .credibility-note {
+      max-width: 760px;
+      margin: 18px 0 0;
+      color: var(--text);
+      font-size: 0.98rem;
+      font-weight: 650;
     }
 
     .hero-actions {
@@ -159,7 +173,7 @@
     }
 
     .section-intro {
-      max-width: 700px;
+      max-width: 720px;
       margin: 0 0 34px;
       color: var(--muted);
       font-size: 1.08rem;
@@ -227,6 +241,29 @@
       background: var(--highlight);
     }
 
+    .faq-list {
+      display: grid;
+      gap: 16px;
+      max-width: 840px;
+    }
+
+    .faq-item {
+      padding: 24px 26px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .faq-item h3 {
+      margin: 0 0 8px;
+      font-size: 1.08rem;
+    }
+
+    .faq-item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
     .contact-box {
       display: flex;
       align-items: center;
@@ -236,6 +273,10 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 14px;
+    }
+
+    .contact-box .section-intro {
+      margin-bottom: 0;
     }
 
     footer {
@@ -248,6 +289,10 @@
     @media (max-width: 760px) {
       .nav {
         min-height: 64px;
+      }
+
+      .nav-links {
+        gap: 14px;
       }
 
       .hero {
@@ -263,6 +308,12 @@
         flex-direction: column;
       }
     }
+
+    @media (max-width: 520px) {
+      .nav-link[href="#faq"] {
+        display: none;
+      }
+    }
   </style>
 </head>
 
@@ -270,7 +321,12 @@
   <header>
     <div class="container nav">
       <a class="brand" href="#">RevenueGuard</a>
-      <a class="nav-link" href="#contact">Contact</a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a class="nav-link" href="#pilot">Pilot</a>
+        <a class="nav-link" href="#faq">FAQ</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </nav>
     </div>
   </header>
 
@@ -279,12 +335,18 @@
       <div class="container">
         <span class="eyebrow">Limited ServiceTitan pilot</span>
 
-        <h1>Find unresolved HVAC membership revenue before it disappears.</h1>
+        <h1>Find unresolved membership revenue before it becomes lost revenue.</h1>
 
         <p class="hero-copy">
           RevenueGuard helps residential HVAC companies identify failed and
           unattempted membership charges that still require attention—without
           replacing ServiceTitan or requesting access to your account.
+        </p>
+
+        <p class="credibility-note">
+          Built from research into real ServiceTitan billing workflows and
+          recurring membership challenges discussed by HVAC office managers
+          and administrators.
         </p>
 
         <div class="hero-actions">
@@ -296,7 +358,7 @@
           </a>
 
           <a class="button button-secondary" href="#pilot">
-            How it works
+            See how it works
           </a>
         </div>
       </div>
@@ -314,7 +376,9 @@
         <div class="grid">
           <article class="card">
             <div class="card-number">01</div>
+
             <h3>Provide three exports</h3>
+
             <p>
               Send recurring billing history, customer membership, and open
               invoice reports. No account credentials are required.
@@ -323,7 +387,9 @@
 
           <article class="card">
             <div class="card-number">02</div>
+
             <h3>Identify unresolved balances</h3>
+
             <p>
               We remove payments already resolved, credited, refunded, or tied
               to inactive memberships.
@@ -332,7 +398,9 @@
 
           <article class="card">
             <div class="card-number">03</div>
+
             <h3>Work the recovery queue</h3>
+
             <p>
               Your office receives a prioritized customer list showing the
               amount requiring review and the recommended next action.
@@ -345,10 +413,10 @@
     <section id="pilot">
       <div class="container">
         <div class="pilot-box">
-          <h2>Founding pilot</h2>
+          <h2>Looking for 3–5 founding pilot companies</h2>
 
           <p class="section-intro">
-            We are inviting three to five residential HVAC companies using
+            We are inviting a small number of residential HVAC companies using
             ServiceTitan to participate in a free four-week pilot.
           </p>
 
@@ -377,7 +445,8 @@
         <p>
           Participant data is used only for the agreed pilot analysis and is
           deleted after the agreed retention period. Identifiable information
-          is never entered into public AI tools or sold to third parties.
+          is never entered into public AI tools, sold, or shared with unrelated
+          third parties.
         </p>
       </div>
     </section>
@@ -387,11 +456,60 @@
         <h2>About RevenueGuard</h2>
 
         <p class="section-intro">
-          RevenueGuard is an independent software research project focused on
-          improving revenue assurance for recurring-service businesses. We are
-          currently validating a focused membership-recovery process with a
-          limited number of residential HVAC companies using ServiceTitan.
+          RevenueGuard helps recurring-service businesses identify unresolved
+          recurring revenue before it slips through the cracks. We are
+          currently conducting a limited pilot with a small number of
+          residential HVAC companies using ServiceTitan.
         </p>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <h2>Frequently asked questions</h2>
+
+        <p class="section-intro">
+          The pilot is designed to be simple, limited in scope, and low-risk for
+          participating companies.
+        </p>
+
+        <div class="faq-list">
+          <article class="faq-item">
+            <h3>Do you need access to our ServiceTitan account?</h3>
+
+            <p>
+              No. RevenueGuard works from reports your team exports. We do not
+              request passwords, login access, or API credentials.
+            </p>
+          </article>
+
+          <article class="faq-item">
+            <h3>Do you need payment information?</h3>
+
+            <p>
+              No. We never request payment credentials, card numbers, banking
+              information, or other sensitive payment details.
+            </p>
+          </article>
+
+          <article class="faq-item">
+            <h3>How long does the pilot take?</h3>
+
+            <p>
+              The initial analysis begins after the required reports are
+              received. Recovery results are then measured over four weeks.
+            </p>
+          </article>
+
+          <article class="faq-item">
+            <h3>Is there any obligation afterward?</h3>
+
+            <p>
+              No. The pilot is free, and there is no obligation to purchase
+              software or continue with any paid service afterward.
+            </p>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -399,7 +517,8 @@
       <div class="container">
         <div class="contact-box">
           <div>
-            <h2>Interested in the pilot?</h2>
+            <h2>Interested in becoming a founding pilot company?</h2>
+
             <p class="section-intro">
               Email us to ask questions or discuss whether your membership
               program is a fit.
@@ -419,7 +538,7 @@
 
   <footer>
     <div class="container">
-      © 2026 RevenueGuard. Independent research pilot.
+      © 2026 RevenueGuard. Independent pilot program.
     </div>
   </footer>
 </body>
